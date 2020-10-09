@@ -29,7 +29,7 @@ function Initialization {
             $credential = New-Object System.Management.Automation.PSCredential -ArgumentList $credentials.clientId, ($credentials.clientSecret | ConvertTo-SecureString -AsPlainText -Force)
 
             # Connect azure account
-            Connect-AzAccount -TenantId $credentials.tenantId -ServicePrincipal -Credential $credential -SubscriptionId $credentials.subscriptionId -WarningAction SilentlyContinue | Out-Null
+            Connect-AzAccount -TenantId $credentials.tenantId -ServicePrincipal -Credential $credential -SubscriptionId $credentials.subscriptionId -Environment AzureUSGovernment -WarningAction SilentlyContinue | Out-Null
 
             # Configure git
             switch ($env:SCM_PLATFORM) {
